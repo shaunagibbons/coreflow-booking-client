@@ -5,6 +5,17 @@ import type {
   PilatesClass,
 } from '@/data/types';
 
+/**
+ * Normalize API responses that may return either a paginated object
+ * ({ count, results, ... }) or a plain array.
+ */
+function normalizePaginated<T>(data: PaginatedResponse<T> | T[]): PaginatedResponse<T> {
+  if (Array.isArray(data)) {
+    return { count: data.length, next: null, previous: null, results: data };
+  }
+  return data;
+}
+
 const classService = {
   async list(
     filters?: ClassFilters,
@@ -22,11 +33,11 @@ const classService = {
       if (filters.page) params.page = String(filters.page);
     }
 
-    const response = await api.get<PaginatedResponse<PilatesClass>>(
+    const response = await api.get<PaginatedResponse<PilatesClass> | PilatesClass[]>(
       '/classes/',
       { params },
     );
-    return response.data;
+    return normalizePaginated(response.data);
   },
 
   async getById(id: number): Promise<PilatesClass> {

@@ -6,32 +6,43 @@ import type {
   PaginatedResponse,
 } from '@/data/types';
 
+/**
+ * Normalize API responses that may return either a paginated object
+ * ({ count, results, ... }) or a plain array.
+ */
+function normalizePaginated<T>(data: PaginatedResponse<T> | T[]): PaginatedResponse<T> {
+  if (Array.isArray(data)) {
+    return { count: data.length, next: null, previous: null, results: data };
+  }
+  return data;
+}
+
 const bookingService = {
   async list(page?: number): Promise<PaginatedResponse<BookingListItem>> {
     const params = page ? { page: String(page) } : undefined;
-    const response = await api.get<PaginatedResponse<BookingListItem>>(
+    const response = await api.get<PaginatedResponse<BookingListItem> | BookingListItem[]>(
       '/bookings/',
       { params },
     );
-    return response.data;
+    return normalizePaginated(response.data);
   },
 
   async upcoming(page?: number): Promise<PaginatedResponse<BookingListItem>> {
     const params = page ? { page: String(page) } : undefined;
-    const response = await api.get<PaginatedResponse<BookingListItem>>(
+    const response = await api.get<PaginatedResponse<BookingListItem> | BookingListItem[]>(
       '/bookings/upcoming/',
       { params },
     );
-    return response.data;
+    return normalizePaginated(response.data);
   },
 
   async past(page?: number): Promise<PaginatedResponse<BookingListItem>> {
     const params = page ? { page: String(page) } : undefined;
-    const response = await api.get<PaginatedResponse<BookingListItem>>(
+    const response = await api.get<PaginatedResponse<BookingListItem> | BookingListItem[]>(
       '/bookings/past/',
       { params },
     );
-    return response.data;
+    return normalizePaginated(response.data);
   },
 
   async getById(id: number): Promise<Booking> {
