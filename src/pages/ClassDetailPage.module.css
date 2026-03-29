@@ -1,0 +1,65 @@
+.center {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2xl) 0;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+}
+
+.details {
+  max-width: 600px;
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.cardTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.dl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.9375rem;
+}
+
+.row dt {
+  width: 100px;
+  flex-shrink: 0;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.row dd {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.bookingText {
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
