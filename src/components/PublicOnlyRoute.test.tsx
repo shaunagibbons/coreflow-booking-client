@@ -41,7 +41,7 @@ describe('PublicOnlyRoute', () => {
     vi.mocked(useAuth).mockReturnValue({
       isLoading: false,
       isAuthenticated: true,
-      user: { id: 1, email: 'test@example.com', first_name: 'Test', last_name: 'User', phone_number: '', is_instructor: false, date_joined: '', profile_image_url: null },
+      user: { id: 1, email: 'test@example.com', first_name: 'Test', last_name: 'User', full_name: 'Test User', phone_number: '', is_instructor: false, date_joined: '' },
       login: vi.fn(),
       register: vi.fn(),
       logout: vi.fn(),

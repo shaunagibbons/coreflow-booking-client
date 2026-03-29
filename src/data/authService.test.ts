@@ -61,9 +61,9 @@ describe('authService', () => {
     const user = { id: 1, email: 'test@example.com', first_name: 'Updated', last_name: 'User' };
     vi.mocked(api.patch).mockResolvedValueOnce({ data: user });
 
-    const result = await authService.updateProfile({ first_name: 'Updated' });
+    const result = await authService.updateProfile({ first_name: 'Updated', last_name: 'User' });
 
-    expect(api.patch).toHaveBeenCalledWith('/auth/users/update_profile/', { first_name: 'Updated' });
+    expect(api.patch).toHaveBeenCalledWith('/auth/users/update_profile/', { first_name: 'Updated', last_name: 'User' });
     expect(result).toEqual(user);
   });
 
