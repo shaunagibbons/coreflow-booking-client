@@ -1,0 +1,48 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.content {
+  flex: 1;
+}
+
+.dismiss {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.6;
+}
+
+.dismiss:hover {
+  opacity: 1;
+}
+
+.info {
+  background-color: var(--color-info-light);
+  color: #0c5460;
+}
+
+.success {
+  background-color: var(--color-success-light);
+  color: #155724;
+}
+
+.warning {
+  background-color: var(--color-warning-light);
+  color: #856404;
+}
+
+.error {
+  background-color: var(--color-danger-light);
+  color: #721c24;
+}
