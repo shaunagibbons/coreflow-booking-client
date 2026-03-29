@@ -4,6 +4,8 @@ import PublicOnlyRoute from '@/components/PublicOnlyRoute';
 import Layout from '@/components/layout/Layout';
 import LoginPage from '@/pages/LoginPage';
 import RegisterPage from '@/pages/RegisterPage';
+import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
+import ResetPasswordPage from '@/pages/ResetPasswordPage';
 import DashboardPage from '@/pages/DashboardPage';
 import ClassListPage from '@/pages/ClassListPage';
 import ClassDetailPage from '@/pages/ClassDetailPage';
@@ -18,6 +20,8 @@ export default function App() {
       <Route element={<PublicOnlyRoute />}>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password/:uid/:token" element={<ResetPasswordPage />} />
       </Route>
 
       {/* Protected routes (redirect to login if unauthenticated) */}

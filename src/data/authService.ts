@@ -32,6 +32,24 @@ const authService = {
   async changePassword(data: ChangePasswordRequest): Promise<void> {
     await api.post('/auth/users/change_password/', data);
   },
+
+  async requestPasswordReset(email: string): Promise<void> {
+    await api.post('/auth/password-reset/', { email });
+  },
+
+  async confirmPasswordReset(
+    uid: string,
+    token: string,
+    new_password: string,
+    new_password_confirm: string,
+  ): Promise<void> {
+    await api.post('/auth/password-reset-confirm/', {
+      uid,
+      token,
+      new_password,
+      new_password_confirm,
+    });
+  },
 };
 
 export default authService;
